@@ -2,10 +2,9 @@ package com.pjh.springbasic.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 // Controller 레이어 :
 // - 클라이언트와 서버간의 접점
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 // @RequestMapping(value="/main", method=RequestMethod.GET)
 @RequestMapping("/basic")
 public class BasicController {
+
     @RequestMapping(value="/first", method=RequestMethod.GET)
     public String firstMethod() {
         return "첫번째 REST API 요청 응답입니다.";
@@ -33,4 +33,6 @@ public class BasicController {
     // HTTP GET method : 클라이언트가 서버로부터 데이터를 받기위한 메서드
     // Request Body가 존재하지 않음
     
+
+
 }
