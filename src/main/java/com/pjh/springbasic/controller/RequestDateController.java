@@ -1,6 +1,7 @@
 package com.pjh.springbasic.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,21 @@ public class RequestDateController {
         @RequestParam(name="age", required=false) Integer age
     ) {
         return "이름 : " + name + " 나이 : " + age;
+    }
+
+    // @PathVariable():
+    // 모든 HTTP 메서드에서 URL의 특정 패턴에 따라 데이터를 추출
+    // GET http://localhost:4000/request-data/path-variable/*
+    @GetMapping({
+        "/path-variable/{var}/{str}",
+        "/path-variable/{var}/",
+        "/path-variable/{var}"
+    })
+    public String pathVariable (
+        @PathVariable(name="var") String var,
+        @PathVariable(name="str", required = false) String str
+    ) {
+        return "읽은 경로 변수 : " + var + ", " + str;
     }
 
 }
