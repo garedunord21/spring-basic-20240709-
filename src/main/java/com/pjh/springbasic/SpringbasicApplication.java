@@ -14,7 +14,7 @@ public class SpringbasicApplication {
 
 	void lombokExample() {
 
-		Lombok lombok = new Lombok("a", "b", "c");
+		Lombok lombok = new Lombok("a", "b", "c", false, false);
 		lombok.getField1();
 		lombok.setField3(null);
 
