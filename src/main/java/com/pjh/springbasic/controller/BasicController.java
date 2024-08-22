@@ -1,6 +1,5 @@
 package com.pjh.springbasic.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -8,15 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 // Controller 레이어 :
 // - 클라이언트와 서버간의 접점
 // - 클라이언트의 요청을 받고 해당 요청에 대한 응답을 처리함
-// - 각 요청에 해당하는 URL 메서드를 작성하는 영역
+// - 각 요청에 행당하는 URL 메서드를 작성하는 영역
 
 // @Controller : 해당 클래스가 컨트롤러 레이어임을 명시, 단 응답 데이터가 HTML 형식임
 // @Controller
@@ -39,11 +35,10 @@ public class BasicController {
 
     // HTTP GET method : 클라이언트가 서버로부터 데이터를 받기위한 메서드
     // Request Body가 존재하지 않음
-    @GetMapping("/")
+    @GetMapping("")
     public String getMethod() {
         return "GET Method";
     }
-
 
     // HTTP POST method : 클라이언트가 서버에 리소스를 작성하기 위한 메서드
     // Request Body가 존재함
