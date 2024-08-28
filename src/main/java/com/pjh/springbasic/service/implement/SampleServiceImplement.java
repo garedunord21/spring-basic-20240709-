@@ -19,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SampleServiceImplement implements SampleService {
 
-    private final SampleTable1Repository sampleTable1Repository;
     private final SampleUserRepository sampleUserRepository;
+    private final SampleTable1Repository sampleTable1Repository;
 
     @Override
     public ResponseEntity<String> postSample1(PostSample1RequestDto dto) {
@@ -59,20 +59,22 @@ public class SampleServiceImplement implements SampleService {
 
         // 2. repository를 이용하여 Entity에 해당하는 레코드 삭제
         //    - 해당하는 레코드가 존재하지 않을때 수행 불가능
+
         SampleTable1Entity entity = sampleTable1Repository.findById(sampleId).get();
         sampleTable1Repository.delete(entity);
 
         return ResponseEntity.status(HttpStatus.OK).body("성공");
-
 
     }
 
     @Override
     public ResponseEntity<String> queryString() {
 
-        List<SampleUserEntity> sampleUserEntities = sampleUserRepository.getNativeSql("홍길동","부산광역시");
+        List<SampleUserEntity> sampleUserEntities = sampleUserRepository.getNativeSql("홍길동", "부산광역시");
         
         return ResponseEntity.status(HttpStatus.OK).body(sampleUserEntities.toString());
     }
+
+    
     
 }

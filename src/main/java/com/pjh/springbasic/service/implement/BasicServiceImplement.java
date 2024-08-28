@@ -21,5 +21,5 @@ public class BasicServiceImplement implements BasicService {
     public ResponseEntity<String> getService() {
         return ResponseEntity.status(HttpStatus.OK).body("서비스 호출");
     }
-    
+
 }

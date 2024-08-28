@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.pjh.springbasic.entity.SampleUserEntity;
 
 @Repository
-public interface SampleUserRepository
+public interface SampleUserRepository 
 extends JpaRepository<SampleUserEntity, String> {
-
+    
     // Query Method:
     // - Repository의 메서드 선언시에 지정된 패턴에 따라 메서드명을 작성하면 JPA가 SQL을 만들어주는 방법
     // - findBy : 필드명을 기준으로 모든 컬럼을 조회할 때 사용, findBy 뒤에 필드명을 붙여서 작성, 필드명의 첫글자는 대문자이어야함
@@ -39,7 +39,7 @@ extends JpaRepository<SampleUserEntity, String> {
     // - 쿼리 메서드의 한계를 극복하기위해 사용하는 방식
     // - 쿼리 메서드가 사용할 수 없는 복잡한 쿼리를 직접 작성하는 방법
 
-    // JPQL (Java Persistencs Query Language)
+    // JPQL (Java Persistence Query Language)
     // - 표준 SQL과 매우 흡사하지만 Entity 클래스와 Entity 필드로 쿼리를 작성하는 방법
     @Query(value="SELECT u FROM user u WHERE u.name = ?1 AND u.address = ?2")
     List<SampleUserEntity> getJpql(String name, String address);
@@ -48,20 +48,20 @@ extends JpaRepository<SampleUserEntity, String> {
     List<SampleUserEntity> getJpql2(
         @Param("name") String name, 
         @Param("address") String address
-        );
+    );
 
-        // Native SQL:
-        // - 현재 RDBMS의 SQL 문법을 그대로 사용하는 방법
-        // - @Query nativeQuery 속성을 반드시 true로 지정
-        @Query(value=
-        "SELECT * " +
-        "FROM sample_user " + 
-        "WHERE name = :name " + 
-        "AND address = :address"
-        , nativeQuery = true)
-        List<SampleUserEntity> getNativeSql(
-            @Param("name") String name,
-            @Param("address") String address
-        );
+    // Native SQL:
+    // - 현재 RDBMS의 SQL 문법을 그대로 사용하는 방법
+    // - @Query nativeQuery 속성을 반드시 true로 지정
+    @Query(value=
+    "SELECT * " +
+    "FROM sample_user " + 
+    "WHERE name = :name " + 
+    "AND address = :address"
+    , nativeQuery=true)
+    List<SampleUserEntity> getNativeSql(
+        @Param("name") String name,
+        @Param("address") String address
+    );
 
 }
