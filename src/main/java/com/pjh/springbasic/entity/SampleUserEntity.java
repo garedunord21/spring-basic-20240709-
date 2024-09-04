@@ -1,5 +1,7 @@
 package com.pjh.springbasic.entity;
 
+import com.pjh.springbasic.dto.PostUserRequestDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -26,5 +28,13 @@ public class SampleUserEntity {
     private String name;
     private String address;
     private String telNumber;
+
+    public SampleUserEntity(PostUserRequestDto dto) {
+        this.userId = dto.getUserId();
+        this.password = dto.getPassword();
+        this.name = dto.getName();
+        this.address = dto.getAddress();
+        this.telNumber = dto.getTelNumber();
+    }
 
 }
